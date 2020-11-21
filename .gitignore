@@ -1,0 +1,6 @@
+*.log
+for_postgres
+*.env
+.python-version
+TODO.md
+*__pycache__*

@@ -1,0 +1,25 @@
+version: 1
+
+formatters:
+    json:
+        class: pythonjsonlogger.jsonlogger.JsonFormatter
+        format: '%(asctime)s %(levelname)s %(name)s  %(message)s'
+    simple:
+        format: '%(asctime)s - %(levelname)s - %(name)s - %(message)s'
+
+handlers:
+    file_handler: 
+        class: logging.FileHandler
+        level: DEBUG
+        formatter: json
+        filename: logfile.log
+        encoding: utf8
+    console: 
+        class: logging.StreamHandler
+        level: DEBUG
+        formatter: simple
+
+loggers:
+    base_logger:
+        level: DEBUG
+        handlers: [file_handler, console]

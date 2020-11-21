@@ -1,0 +1,6 @@
+.git
+.cache
+for_postgres
+*.log
+TODO.md
+
