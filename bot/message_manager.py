@@ -3,8 +3,6 @@ import requests
 import os
 from . import settings
 
-# про форматирование хорошо https://shultais.education/blog/python-f-strings
-
 OK_CODES = (200, 201, 202, 203, 204)
 
 def get_updates(token):
@@ -52,9 +50,6 @@ def prepare_message(abrs:str):
         base_message += "За {} {} {} бел.руб \n".format(curr_scale, curr_abr, rate) 
     return base_message
 
-#print(prepare_message("usd,rub"))
-    
-
 def process_message(message):
     message = message["message"]
     message_text = message["text"]
@@ -101,5 +96,3 @@ def run_pooling(frequency:int, token:str):
         messages = get_updates(token)
         process_input_messages(messages)
         time.sleep(frequency)
-
-# run_pooling(7, settings.token)
