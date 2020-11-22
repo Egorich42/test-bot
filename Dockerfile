@@ -12,4 +12,4 @@ RUN pip install -r requirements.txt
 
 ENTRYPOINT [ "python" ]
 
-CMD ["message_manager.py"]
+CMD ["run.py"]
