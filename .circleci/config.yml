@@ -12,8 +12,9 @@ jobs:
       - python/install-deps
       - python/save-cache
       - run:
-          command: pip install -r requirements.txt
-          command: python -m unittest tests
+          command: |
+          pip install -r requirements.txt
+          python -m unittest tests
           name: Test
 
 workflows:
