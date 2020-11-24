@@ -4,12 +4,9 @@ orbs:
   python: circleci/python@0.2.1
 
 jobs:
-  build:
-    working_directory: /dockerapp1
+  test:
     docker:
       - image: docker:17.05.0-ce-git
-      
-  test:
     executor: python/default
     steps:
       - checkout
