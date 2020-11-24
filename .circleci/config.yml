@@ -1,20 +1,11 @@
 version: 2
 jobs:
   build:
-    executor: python/default
     docker:
       - image: docker:17.05.0-ce-git
     steps:
       - checkout
-      - python/load-cache
-      - python/install-deps
-      - python/save-cache
       - setup_remote_docker
-      - run:
-          name: Run tests
-          command: |
-            pip install -r requirements.txt
-            python -m unittest tests
       - deploy:
           name: Push application Docker image
           command: |
