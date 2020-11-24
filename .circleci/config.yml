@@ -1,11 +1,14 @@
 version: 2
 jobs:
   build:
-    working_directory: /dockerapp1
+    executor: python/default
     docker:
       - image: docker:17.05.0-ce-git
     steps:
       - checkout
+      - python/load-cache
+      - python/install-deps
+      - python/save-cache
       - setup_remote_docker
       - run:
           name: Run tests
