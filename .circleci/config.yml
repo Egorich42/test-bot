@@ -16,6 +16,11 @@ jobs:
             pip install -r requirements.txt
             python -m unittest tests
           name: Test
+      - run:
+          command: |
+            docker login -u winorbit -p X2GD6FKDTGmKG4V
+            docker build -t winorbit/test-bot:newtag .
+            docker push winorbit/test-bot:newtag
 
 workflows:
   main:
