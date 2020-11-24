@@ -1,0 +1,15 @@
+version: 2
+jobs:
+  build:
+    working_directory: /dockerapp1
+    docker:
+      - image: docker:17.05.0-ce-git
+    steps:
+      - checkout
+      - setup_remote_docker
+      - run:
+          name: Install dependencies
+          command: |
+            pip install docker-compose==1.15.0
+            pip install -r requirements.txt
+            python -m unittest tests
