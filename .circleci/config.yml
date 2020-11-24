@@ -4,7 +4,12 @@ orbs:
   python: circleci/python@0.2.1
 
 jobs:
-  build-and-test:
+  build:
+    working_directory: /dockerapp1
+    docker:
+      - image: docker:17.05.0-ce-git
+      
+  test:
     executor: python/default
     steps:
       - checkout
@@ -16,7 +21,9 @@ jobs:
             pip install -r requirements.txt
             python -m unittest tests
           name: Test
-      - run:
+          
+      - deploy:
+          name: Push application Docker image
           command: |
             docker login -u winorbit -p X2GD6FKDTGmKG4V
             docker build -t winorbit/test-bot:newtag .
@@ -25,4 +32,4 @@ jobs:
 workflows:
   main:
     jobs:
-      - build-and-test
+      - test
