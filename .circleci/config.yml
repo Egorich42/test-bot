@@ -12,6 +12,7 @@ jobs:
             pip install -r requirements.txt
             python -m unittest tests
           name: Test
+
   build:
     docker:
       - image: docker:17.05.0-ce-git
@@ -24,3 +25,9 @@ jobs:
               docker login -u winorbit -p X2GD6FKDTGmKG4V
               docker build -t winorbit/test-bot:newtag .
               docker push winorbit/test-bot:newtag
+
+workflows:
+  main:
+    jobs:
+      - test
+      - build
