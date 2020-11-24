@@ -1,5 +1,17 @@
 version: 2
 jobs:
+  test:
+    executor: python/default
+    steps:
+      - checkout
+      - python/load-cache
+      - python/install-deps
+      - python/save-cache
+      - run:
+          command: |
+            pip install -r requirements.txt
+            python -m unittest tests
+          name: Test
   build:
     docker:
       - image: docker:17.05.0-ce-git
